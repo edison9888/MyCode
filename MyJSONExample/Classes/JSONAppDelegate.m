@@ -18,21 +18,29 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
     
+    //由本機讀取JSON資料
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
     NSString *jsonStr = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
     
     
+    /*
+     //從網路讀去JSON資料
+     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://pro.ctlok.com/data.json"]];  
+     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];  
+     NSString *jsonStr = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+     */
+    
     SBJsonParser *parser = [[SBJsonParser alloc] init];
     NSDictionary *json = [parser objectWithString:jsonStr error:nil];
-    
+    //Laevl1
     NSDictionary *glossary = [json objectForKey:@"glossary"];
     NSString *glossaryTitle = [glossary objectForKey:@"title"];
-    
+    //Laevl2
     NSDictionary *glossDiv = [glossary objectForKey:@"GlossDiv"];
     NSString *glossDivTitle = [glossDiv objectForKey:@"title"];
-    
+    //Laevl3
     NSDictionary *glossList = [glossDiv objectForKey:@"GlossList"];
-    
+    //Laevl4
     NSDictionary *glossEntry = [glossList objectForKey:@"GlossEntry"];
     NSString *glossEntryAbbrev = [glossEntry objectForKey:@"Abbrev"];
     NSString *glossEntryAcronym = [glossEntry objectForKey:@"Acronym"];
