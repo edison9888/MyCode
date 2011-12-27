@@ -1,6 +1,12 @@
 網路範例練習
-2011-12-21 TestConnectNetwork	測試網路連線
-2011-12-21 NSTimerSample	多個NSTimer Sample
-2011-12-21 SampleTimeClock	簡易小時鐘
+2011-12-21 TestConnectNetwork 測試網路連線
+2011-12-21 NSTimerSample      多個NSTimer Sample
+2011-12-21 SampleTimeClock    簡易小時鐘
 
-2011-12023 MyJSONExample	JSON匯入練習
+2011-12-23 MyJSONExample      JSON匯入練習
+2011-12-23 testFlowControll   測試程式流程
+
+2011-12-26  iOSUIBaseClass    測試基礎類別
+
+2011-12-27 TestGradientImage  漸層畫面
+2011-12-27 TestGradientImage2 漸層
