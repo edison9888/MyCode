@@ -66,7 +66,9 @@
     
     //啓動距離監測器
     device.proximityMonitoringEnabled = YES;
-    proximityLabel.text = [NSString stringWithFormat:@"%@", UIDeviceProximityStateDidChangeNotification];
+    if (device.proximityMonitoringEnabled == YES) {
+        [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(proximityChanged:) name:@"UIDeviceProximityStateDidChangeNotification" object:device];
+    }
 
 //    NSLog(@"設備名稱：%@", device.name);
 //    NSLog(@"作業系統名稱：%@",device.systemName);
@@ -120,5 +122,9 @@
     // Return YES for supported orientations
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
-
+- (void) proximityChanged:(NSNotification *)notification{
+    UIDevice *device = [notification object];
+    proximityLabel.text = [NSString stringWithFormat:@"%i",device.proximityState];
+    NSLog(@"%i",device.proximityState);
+}
 @end
