@@ -12,7 +12,7 @@
 
 @synthesize deviceNameLabel,deviceSyatemNameLabel,deviceSystemVersionLabel,deviceModelLabel,deviceLocalizedModelLabel;
 @synthesize batterStatusLabel,batterLevelLabel;
-@synthesize proximityLabel;
+@synthesize proximityLabel,orientationLabel;
 
 - (void)didReceiveMemoryWarning
 {
@@ -28,14 +28,26 @@
     
     UIDevice *device = [UIDevice currentDevice];
     
-    //NSLog(@"%@",device.uniqueIdentifier);
+    //NSLog(@"%@",device.uniqueIdentifier);//iOS5過期
     
     deviceNameLabel.text = device.name;
     deviceSyatemNameLabel.text = device.systemName;
     deviceSystemVersionLabel.text = device.systemVersion;
     deviceModelLabel.text = device.model;
     deviceLocalizedModelLabel.text = device.localizedModel;
-    //deviceOrientation.text = device.orientation;
+    
+    //設備方向
+    if (device.orientation == UIDeviceOrientationPortrait) {
+        orientationLabel.text = @"UIDeviceOrientationPortrait";
+    } else if (device.orientation == UIDeviceOrientationPortraitUpsideDown){
+        orientationLabel.text = @"UIDeviceOrientationPortraitUpsideDown";
+    }else if (device.orientation == UIDeviceOrientationLandscapeLeft){
+        orientationLabel.text = @"UIDeviceOrientationLandscapeLeft";
+    }else if (device.orientation == UIDeviceOrientationLandscapeRight){
+        orientationLabel.text = @"UIDeviceOrientationLandscapeRight";
+    }else if (device.orientation == UIDeviceOrientationUnknown){
+        orientationLabel.text = @"UnKnown";
+    }
     
     //啓動電池監測
     [device setBatteryMonitoringEnabled:YES];
@@ -54,7 +66,7 @@
     
     //啓動距離監測器
     device.proximityMonitoringEnabled = YES;
-    proximityLabel.text = UIDeviceProximityStateDidChangeNotification;
+    proximityLabel.text = [NSString stringWithFormat:@"%@", UIDeviceProximityStateDidChangeNotification];
 
 //    NSLog(@"設備名稱：%@", device.name);
 //    NSLog(@"作業系統名稱：%@",device.systemName);

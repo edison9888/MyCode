@@ -17,7 +17,7 @@
     UILabel *deviceLocalizedModelLabel;
     UILabel *batterStatusLabel;
     UILabel *batterLevelLabel;
-    
+    UILabel *orientationLabel;
     UILabel *proximityLabel;
 }
 
@@ -28,6 +28,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *deviceLocalizedModelLabel;
 @property (nonatomic, retain) IBOutlet UILabel *batterStatusLabel;
 @property (nonatomic, retain) IBOutlet UILabel *batterLevelLabel;
+
+@property (nonatomic, retain) IBOutlet UILabel *orientationLabel;
 
 @property (nonatomic, retain) IBOutlet UILabel *proximityLabel;
 
